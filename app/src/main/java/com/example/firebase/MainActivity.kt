@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        val errortext = findViewById<TextView>(R.id.errortext)
+
         val login = findViewById<Button>(R.id.login)
 
         login.setOnClickListener {
@@ -28,19 +30,28 @@ class MainActivity : AppCompatActivity() {
             val pass = findViewById<EditText>(R.id.pass)
             val passtext = pass.text.toString()
 
-            auth.signInWithEmailAndPassword(emailtext, passtext)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            Toast.makeText(
-                                    baseContext, "Login 成功",
-                                    Toast.LENGTH_SHORT
-                            ).show()
-                        } else {
-                            val errortext = findViewById<TextView>(R.id.errortext)
-                            errortext.text = "メールアドレスまたはパスワードが違います"
-                        }
+            if(emailtext.length == 0 && passtext.length == 0){
+                errortext.text = "メールアドレスとパスワードを入力してください"
+            }else if(emailtext.length == 0){
+                errortext.text = "メールアドレスを入力してください"
+            }else if(passtext.length == 0){
+                errortext.text = "パスワードを入力してください"
+            }else {
 
-                    }
+                auth.signInWithEmailAndPassword(emailtext, passtext)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                Toast.makeText(
+                                        baseContext, "Login 成功",
+                                        Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                errortext.text = "メールアドレスまたはパスワードが違います"
+                            }
+
+                        }
+            }
+
         }
     }
 }
