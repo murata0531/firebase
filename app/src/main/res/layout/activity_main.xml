@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/logintitle"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="138dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="ログイン"
         android:textColor="#C81313"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075" />
+        android:textSize="36sp" />
 
     <EditText
         android:id="@+id/email"
@@ -27,12 +23,15 @@
         android:ems="10"
         android:hint="メールアドレス"
         android:inputType="textEmailAddress"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/erroremail"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|center_vertical"
+        android:textColor="#F40606"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/pass"
@@ -41,51 +40,48 @@
         android:ems="10"
         android:hint="パスワード(英字8文字以上)"
         android:inputType="textPassword"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/errortext"
+        android:id="@+id/erropass"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center_horizontal|center_vertical"
         android:textColor="#F40606"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.405"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.685" />
+        android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="110dp"
-        android:layout_height="62dp"
-        android:text="ログイン"
-        android:textColorHighlight="#FFFFFF"
-        app:backgroundTint="#03A9F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.816" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/toregister"
-        android:layout_width="314dp"
-        android:layout_height="58dp"
-        android:text="アカウントをお持ちでない方はこちら"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.955" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/login"
+            android:layout_width="144dp"
+            android:layout_height="77dp"
+            android:layout_gravity="center"
+            android:text="ログイン"
+            android:textColorHighlight="#FFFFFF"
+            app:backgroundTint="#03A9F4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.449"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.236" />
+
+        <Button
+            android:id="@+id/toregister"
+            android:layout_width="314dp"
+            android:layout_height="58dp"
+            android:layout_gravity="center"
+            android:text="アカウントをお持ちでない方はこちら"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.828" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

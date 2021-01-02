@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        val errortext = findViewById<TextView>(R.id.errortext)
+        val errortext = findViewById<TextView>(R.id.erropass)
 
         val login = findViewById<Button>(R.id.login)
 
