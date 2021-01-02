@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        val errortext = findViewById<TextView>(R.id.erropass)
+        val erroremail = findViewById<TextView>(R.id.erroremail)
+        val errorpass = findViewById<TextView>(R.id.errorpass)
 
         val login = findViewById<Button>(R.id.login)
 
@@ -30,12 +31,17 @@ class MainActivity : AppCompatActivity() {
             val pass = findViewById<EditText>(R.id.pass)
             val passtext = pass.text.toString()
 
+            val regex = Regex("^[A-Za-z]+\$")
+
             if(emailtext.length == 0 && passtext.length == 0){
-                errortext.text = "メールアドレスとパスワードを入力してください"
+                erroremail.text = "メールアドレスを入力してください"
+                errorpass.text = "パスワードを入力してください"
             }else if(emailtext.length == 0){
-                errortext.text = "メールアドレスを入力してください"
+                erroremail.text = "メールアドレスを入力してください"
             }else if(passtext.length == 0){
-                errortext.text = "パスワードを入力してください"
+                errorpass.text = "パスワードを入力してください"
+            }else if((regex.matches(passtext) == false && passtext.length <= 8) || (regex.matches(passtext) == false || passtext.length <= 8 ) ){
+                errorpass.text = "パスワードは英字8文字以上で入力してください"
             }else {
 
                 auth.signInWithEmailAndPassword(emailtext, passtext)
@@ -46,7 +52,6 @@ class MainActivity : AppCompatActivity() {
                                         Toast.LENGTH_SHORT
                                 ).show()
                             } else {
-                                errortext.text = "メールアドレスまたはパスワードが違います"
                             }
 
                         }
