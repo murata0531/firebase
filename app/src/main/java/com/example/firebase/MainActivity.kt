@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         val erroremail = findViewById<TextView>(R.id.erroremail)
         val errorpass = findViewById<TextView>(R.id.errorpass)
 
-        val login = findViewById<Button>(R.id.login)
-        val toregister = findViewById<Button>(R.id.toregister)
+        val login = findViewById<Button>(R.id.register)
+        val toregister = findViewById<Button>(R.id.tologin)
 
         toregister.setOnClickListener {
 

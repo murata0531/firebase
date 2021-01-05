@@ -64,7 +64,7 @@
                 android:layout_height="328dp">
 
                 <Button
-                    android:id="@+id/login"
+                    android:id="@+id/register"
                     android:layout_width="144dp"
                     android:layout_height="77dp"
                     android:layout_gravity="center"
@@ -79,7 +79,7 @@
                     app:layout_constraintVertical_bias="0.183" />
 
                 <Button
-                    android:id="@+id/toregister"
+                    android:id="@+id/tologin"
                     android:layout_width="314dp"
                     android:layout_height="58dp"
                     android:layout_gravity="center"
