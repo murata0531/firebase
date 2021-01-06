@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
         }
+
         login.setOnClickListener {
 
             val email = findViewById<EditText>(R.id.email)

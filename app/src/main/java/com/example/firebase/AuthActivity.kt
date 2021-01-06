@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -27,6 +28,32 @@ class AuthActivity : AppCompatActivity() {
 
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+        }
+
+        register.setOnClickListener {
+
+            val email = findViewById<EditText>(R.id.email)
+            val emailtext = email.text.toString()
+
+            val pass = findViewById<EditText>(R.id.pass)
+            val passtext = pass.text.toString()
+
+            val regex = Regex("^[A-Za-z]+\$")
+
+            if(emailtext.length == 0 && passtext.length == 0){
+                erroremail.text = "メールアドレスを入力してください"
+                errorpass.text = "パスワードを入力してください"
+            }else if(emailtext.length == 0){
+                erroremail.text = "メールアドレスを入力してください"
+            }else if(passtext.length == 0){
+                errorpass.text = "パスワードを入力してください"
+            }else if((regex.matches(passtext) == false && passtext.length <= 8) || (regex.matches(
+                            passtext
+                    ) == false || passtext.length <= 8 ) ){
+                errorpass.text = "パスワードは英字8文字以上で入力してください"
+            }else {
+                
+            }
         }
     }
 }
