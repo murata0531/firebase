@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        val erroremail = findViewById<TextView>(R.id.erroremail)
-        val errorpass = findViewById<TextView>(R.id.errorpass)
+        val erroremail = findViewById<TextView>(R.id.autherroremail)
+        val errorpass = findViewById<TextView>(R.id.autherrorpass)
 
         val login = findViewById<Button>(R.id.register)
         val toregister = findViewById<Button>(R.id.tologin)
@@ -34,10 +34,10 @@ class MainActivity : AppCompatActivity() {
 
         login.setOnClickListener {
 
-            val email = findViewById<EditText>(R.id.email)
+            val email = findViewById<EditText>(R.id.authemail)
             val emailtext = email.text.toString()
 
-            val pass = findViewById<EditText>(R.id.pass)
+            val pass = findViewById<EditText>(R.id.authpass)
             val passtext = pass.text.toString()
 
             val regex = Regex("^[A-Za-z]+\$")
