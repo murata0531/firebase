@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
+import java.lang.System.exit
 
 class AuthActivity : AppCompatActivity() {
 
@@ -20,6 +21,7 @@ class AuthActivity : AppCompatActivity() {
 
         val erroremail = findViewById<TextView>(R.id.autherroremail)
         val errorpass = findViewById<TextView>(R.id.autherrorpass)
+        val errorname = findViewById<TextView>(R.id.autherrorname)
 
         val register = findViewById<Button>(R.id.register)
         val tologin = findViewById<Button>(R.id.tologin)
@@ -38,12 +40,18 @@ class AuthActivity : AppCompatActivity() {
             val pass = findViewById<EditText>(R.id.authpass)
             val passtext = pass.text.toString()
 
+            val name = findViewById<EditText>(R.id.authname)
+            val nametext = name.text.toString()
+
             val regex = Regex("^[A-Za-z]+\$")
 
-            if(emailtext.length == 0 && passtext.length == 0){
+            if(emailtext.length == 0 && passtext.length == 0 && nametext.length == 0){
                 erroremail.text = "メールアドレスを入力してください"
                 errorpass.text = "パスワードを入力してください"
-            }else if(emailtext.length == 0){
+                errorname.text = "名前を入力してください"
+            }else if(nametext.length == 0){
+                errorname.text = "名前を入力してください"
+            } else if(emailtext.length == 0){
                 erroremail.text = "メールアドレスを入力してください"
             }else if(passtext.length == 0){
                 errorpass.text = "パスワードを入力してください"

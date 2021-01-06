@@ -26,6 +26,23 @@
                 android:textSize="36sp" />
 
             <EditText
+                android:id="@+id/authname"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:ems="10"
+                android:hint="名前"
+                android:inputType="textEmailAddress"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/autherrorname"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="#F40606"
+                android:textSize="18sp" />
+
+            <EditText
                 android:id="@+id/authemail"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
@@ -53,23 +70,6 @@
 
             <TextView
                 android:id="@+id/autherrorpass"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:textColor="#F40606"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:ems="10"
-                android:hint="名前"
-                android:inputType="textEmailAddress"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/autherrorname"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:gravity="center_horizontal|center_vertical"
