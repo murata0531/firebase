@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import java.lang.System.exit
 
@@ -59,6 +60,22 @@ class AuthActivity : AppCompatActivity() {
                 errorpass.text = "パスワードは英字8文字以上で入力してください"
             }else {
 
+                auth.createUserWithEmailAndPassword(emailtext, passtext)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+
+                                val user = auth.currentUser
+                                Toast.makeText(baseContext, user.toString() + "さん、こんにいちは",
+                                        Toast.LENGTH_SHORT).show()
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(baseContext, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show()
+                            }
+
+                            // ...
+                        }
             }
         }
     }
