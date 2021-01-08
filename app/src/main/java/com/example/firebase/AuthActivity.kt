@@ -70,6 +70,9 @@ class AuthActivity : AppCompatActivity() {
                                         Toast.LENGTH_SHORT).show()
 
                                 val intent = Intent(this, HomeActivity::class.java)
+
+//                                intent.putExtra("TEXT_KEY",user)
+
                                 startActivity(intent)
 
                             } else {
