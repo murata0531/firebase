@@ -68,6 +68,10 @@ class AuthActivity : AppCompatActivity() {
                                 val user = auth.currentUser
                                 Toast.makeText(baseContext, user.toString() + "さん、こんにいちは",
                                         Toast.LENGTH_SHORT).show()
+
+                                val intent = Intent(this, HomeActivity::class.java)
+                                startActivity(intent)
+
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Toast.makeText(baseContext, "Authentication failed.",
