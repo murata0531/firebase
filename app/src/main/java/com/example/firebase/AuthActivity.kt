@@ -73,12 +73,8 @@ class AuthActivity : AppCompatActivity() {
                                     val database = FirebaseDatabase.getInstance().getReference("user/" + user.uid.toString())
                                     val ref = database.getRef()
                                     ref.setValue(nametext)
-                                    Toast.makeText(baseContext, user.toString() + "さん、こんにいちは",
-                                        Toast.LENGTH_SHORT).show()
 
                                     val intent = Intent(this, HomeActivity::class.java)
-
-//                                intent.putExtra("TEXT_KEY",user)
 
                                     startActivity(intent)
                                 }
