@@ -2,8 +2,7 @@ package com.example.firebase
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,6 +18,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        val textView = TextView(this)
 
         user?.let {
             // Name, email address, and profile photo Url
@@ -36,10 +37,6 @@ class HomeActivity : AppCompatActivity() {
 
 
             val username = findViewById<TextView>(R.id.textusername)
-            val userid = findViewById<TextView>(R.id.textuserid)
-
-
-            userid.text = uid.toString()
 
             val database = FirebaseDatabase.getInstance().getReference("user/" + uid.toString())
 
@@ -47,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
 
                    auth_user_name = snapshot.value.toString()
-                    username.text = auth_user_name
+                    username.text = "ログイン：" + auth_user_name
                 }
                 override fun onCancelled(error: DatabaseError) {
                     //ここにエラーがあった場合の処理を記述する
@@ -56,8 +53,33 @@ class HomeActivity : AppCompatActivity() {
                 }
             })
 
-
         }
 
+        val database = FirebaseDatabase.getInstance().getReference("messages")
+
+        database.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                textView.text = snapshot.value.toString()
+                val scroll = findViewById<LinearLayout>(R.id.scroll)
+
+                scroll.addView(textView)
+            }
+            override fun onCancelled(error: DatabaseError) {
+                //ここにエラーがあった場合の処理を記述する
+                Toast.makeText(applicationContext,
+                    "onCancelledが呼ばれました\n" + error.details, Toast.LENGTH_LONG).show()
+            }
+        })
+
+        val ref = database.getRef()
+
+        val send = findViewById<ImageButton>(R.id.send)
+        val edit = findViewById<EditText>(R.id.edit)
+
+        send.setOnClickListener {
+            ref.setValue(edit.text.toString())
+        }
     }
+
 }
