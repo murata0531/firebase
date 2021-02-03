@@ -8,6 +8,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import java.lang.System.exit
 
 class AuthActivity : AppCompatActivity() {
@@ -64,16 +67,22 @@ class AuthActivity : AppCompatActivity() {
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
-
                                 val user = auth.currentUser
-                                Toast.makeText(baseContext, user.toString() + "さん、こんにいちは",
+
+                                user?.let {
+                                    val database = FirebaseDatabase.getInstance().getReference("user/" + user.uid  )
+                                    val ref = database.getRef()
+                                    ref.setValue(nametext)
+                                    Toast.makeText(baseContext, user.toString() + "さん、こんにいちは",
                                         Toast.LENGTH_SHORT).show()
 
-                                val intent = Intent(this, HomeActivity::class.java)
+                                    val intent = Intent(this, HomeActivity::class.java)
 
 //                                intent.putExtra("TEXT_KEY",user)
 
-                                startActivity(intent)
+                                    startActivity(intent)
+                                }
+
 
                             } else {
                                 // If sign in fails, display a message to the user.
