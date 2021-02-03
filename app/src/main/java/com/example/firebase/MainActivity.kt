@@ -58,10 +58,10 @@ class MainActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(emailtext, passtext)
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
-                                Toast.makeText(
-                                    baseContext, "Login 成功",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+
+                                val intent = Intent(this, HomeActivity::class.java)
+                                startActivity(intent)
+
                             } else {
                                 errorpass.text = "メールアドレスまたはパスワードが違います"
                             }
