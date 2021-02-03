@@ -46,7 +46,7 @@ class HomeActivity : AppCompatActivity() {
             database.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
 
-                   auth_user_name = snapshot.toString()
+                   auth_user_name = snapshot.value.toString()
                     username.text = auth_user_name
                 }
                 override fun onCancelled(error: DatabaseError) {
