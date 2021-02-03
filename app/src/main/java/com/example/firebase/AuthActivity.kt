@@ -70,7 +70,7 @@ class AuthActivity : AppCompatActivity() {
                                 val user = auth.currentUser
 
                                 user?.let {
-                                    val database = FirebaseDatabase.getInstance().getReference("user/" + user.uid  )
+                                    val database = FirebaseDatabase.getInstance().getReference("user/" + user.uid.toString())
                                     val ref = database.getRef()
                                     ref.setValue(nametext)
                                     Toast.makeText(baseContext, user.toString() + "さん、こんにいちは",
